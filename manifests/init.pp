@@ -4,8 +4,9 @@ class beanstalkd {
   }
 
   service { 'beanstalkd':
-    ensure => 'running',
+    ensure => running,
     require => Package['beanstalkd'],
-    start => '/usr/bin/beanstalkd'
+    restart => '/etc/init.d/beanstalkd restart',
+    hasstatus => true,
   }
 }
